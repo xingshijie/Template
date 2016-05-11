@@ -10,9 +10,12 @@ import retrofit2.http.Query;
 /**
  * Created by Word Xing  on 2016/5/10.
  */
+
 interface ApiService {
 
     @GET("turing/turing/turing")
     Call<Turing> turing(@Query("key") String key, @Query("info") String string, @Query("userid") String userId, @Header("apikey") String apiKey);
 
+    @GET("3023/qr/qrcode")
+    Call<String> qrCode(@Query("size") int size, @Query("qr") String qr);
 }

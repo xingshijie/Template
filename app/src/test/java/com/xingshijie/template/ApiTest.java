@@ -1,5 +1,6 @@
 package com.xingshijie.template;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.xingshijie.common.network.Api.ApiServiceImp;
@@ -27,15 +28,24 @@ public class ApiTest {
 
     @Before
     public void setUp() {
-        gson = new GsonBuilder().setPrettyPrinting().create();
+        gson = new GsonBuilder().create();
     }
 
     @Test
     public void anInterface() throws IOException, InterruptedException {
 //        server.enqueue(new MockResponse().setBody("{\"name\":\"value\"}"));
-        Call<Turing> turingCall = ApiServiceImp.turing("我很无聊啊");
+        Call<Turing> turingCall = ApiServiceImp.turing("我累个槽");
         Response<Turing> response = turingCall.execute();
         assertThat(response.code()).isEqualTo(200);
         System.out.println(gson.toJson(response.body()));
+    }
+
+    @Test
+    public void strings() throws IOException, InterruptedException {
+//        server.enqueue(new MockResponse().setBody("{\"name\":\"value\"}"));
+        Call<String> images= ApiServiceImp.qrCode();
+        Response<String> response = images.execute();
+        assertThat(response.code()).isEqualTo(200);
+        System.out.println(JSON.toJSONString(response.body(),true));
     }
 }
