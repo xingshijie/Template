@@ -1,6 +1,7 @@
 package com.xingshijie.common.network.Api;
 
 import com.xingshijie.common.network.coverter.FastJsonConverterFactory;
+import com.xingshijie.common.network.model.QrCode;
 import com.xingshijie.common.network.model.Turing;
 
 import java.io.IOException;
@@ -55,7 +56,7 @@ public class ApiServiceImp {
         return apiService.turing("879a6cb3afb84dbf4fc84a1df2ab7319", info, "eb2edb736", "917a61932ebac3e62a55ff16133b5ed8");
     }
 
-    public static Call<String> qrCode(){
+    public static Call<QrCode> qrCode(){
         return apiService.qrCode(10,"woshixingshijie");
     }
 }

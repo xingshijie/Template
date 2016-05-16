@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.xingshijie.common.network.Api.ApiServiceImp;
+import com.xingshijie.common.network.model.QrCode;
 import com.xingshijie.common.network.model.Turing;
 
 import org.junit.Before;
@@ -43,8 +44,8 @@ public class ApiTest {
     @Test
     public void strings() throws IOException, InterruptedException {
 //        server.enqueue(new MockResponse().setBody("{\"name\":\"value\"}"));
-        Call<String> images= ApiServiceImp.qrCode();
-        Response<String> response = images.execute();
+        Call<QrCode> images= ApiServiceImp.qrCode();
+        Response<QrCode> response = images.execute();
         assertThat(response.code()).isEqualTo(200);
         System.out.println(JSON.toJSONString(response.body(),true));
     }

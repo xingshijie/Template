@@ -1,5 +1,6 @@
 package com.xingshijie.common.network.Api;
 
+import com.xingshijie.common.network.model.QrCode;
 import com.xingshijie.common.network.model.Turing;
 
 import retrofit2.Call;
@@ -17,5 +18,5 @@ interface ApiService {
     Call<Turing> turing(@Query("key") String key, @Query("info") String string, @Query("userid") String userId, @Header("apikey") String apiKey);
 
     @GET("3023/qr/qrcode")
-    Call<String> qrCode(@Query("size") int size, @Query("qr") String qr);
+    Call<QrCode> qrCode(@Query("size") int size, @Query("qr") String qr);
 }
