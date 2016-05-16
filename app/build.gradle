@@ -18,6 +18,14 @@ android {
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "GCM_SERVER_URL", "\"${production_gcm_server_endpoint}\"")
+            resValue("string", "website_host_name", "${production_website_host_name}")
+        }
+
+        debug {
+            buildConfigField("boolean", "ENABLE_DEBUG_TOOLS", "true")
+            buildConfigField("String", "GCM_SERVER_URL", "\"${production_gcm_server_endpoint}\"")
+            resValue("string", "website_host_name", "${production_website_host_name}")
         }
     }
 }
@@ -27,12 +35,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'com.squareup.okhttp3:mockwebserver:3.2.0'
     testCompile 'org.assertj:assertj-core:1.7.0'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile "com.android.support:appcompat-v7:${android_support_lib_version}"
+    compile "com.android.support:support-v4:${android_support_lib_version}"
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile 'com.jakewharton:butterknife:8.0.1'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.alibaba:fastjson:1.2.11'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:support-v4:23.1.1'
 }

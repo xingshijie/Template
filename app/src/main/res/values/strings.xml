@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Template</string>
+    <string name="wifi_install_error_message">Unknown error while calling WiFiManager.saveConfiguration()</string>
+    <string name="calltoaction_wifi_configure"><![CDATA[&lt;br&gt;&lt;br&gt;点选“新增Wi-Fi网络”以继续。]]></string>
+    <string name="wifi_dialog_button_configure">新增WiFi网络</string>
+    <string name="calltoaction_wifi_settings"><![CDATA[&lt;br&gt;&lt;br&gt;点击\\\'打开Wi-Fi设置“以启用Wi-Fi。]]></string>
+    <string name="wifi_dialog_button_settings">开启WiFi设置</string>
 </resources>
