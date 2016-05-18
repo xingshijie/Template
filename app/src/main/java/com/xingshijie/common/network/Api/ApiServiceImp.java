@@ -1,7 +1,10 @@
 package com.xingshijie.common.network.Api;
 
+import com.xingshijie.common.network.BaseCallBackWrapper;
+import com.xingshijie.common.network.BaseCallback;
 import com.xingshijie.common.network.coverter.FastJsonConverterFactory;
 import com.xingshijie.common.network.model.QrCode;
+import com.xingshijie.common.network.model.Result;
 import com.xingshijie.common.network.model.Turing;
 
 import java.io.IOException;
@@ -58,5 +61,20 @@ public class ApiServiceImp {
 
     public static Call<QrCode> qrCode(){
         return apiService.qrCode(10,"woshixingshijie");
+    }
+
+    public static Call<Result<Turing>> demo(String str, BaseCallback<Turing> cb){
+        if(str == null){
+            cb.onFailure();
+        }
+        Call<Result<Turing>> call = apiService.demo();
+        call.enqueue(new BaseCallBackWrapper<Turing>(cb){
+            @Override
+            public void onSuccess(Turing turing) {
+                turing.setUrl("");
+                super.onSuccess(turing);
+            }
+        });
+        return call;
     }
 }
