@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.xingshijie.common.network.Api.ApiServiceImp;
 import com.xingshijie.common.network.model.QrCode;
 import com.xingshijie.common.network.model.Turing;
+import com.xingshijie.template.utils.LogUtils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,6 +31,7 @@ public class ApiTest {
     @Before
     public void setUp() {
         gson = new GsonBuilder().create();
+        LogUtils.LOGGING_ENABLED = false;
     }
 
     @Test

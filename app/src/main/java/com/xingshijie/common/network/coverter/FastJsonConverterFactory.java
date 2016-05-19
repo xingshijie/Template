@@ -1,7 +1,5 @@
 package com.xingshijie.common.network.coverter;
 
-import android.util.Log;
-
 import com.alibaba.fastjson.JSON;
 
 import java.io.IOException;
@@ -16,11 +14,16 @@ import okio.BufferedSource;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 
+import static com.xingshijie.template.utils.LogUtils.LOGD;
+import static com.xingshijie.template.utils.LogUtils.LOGE;
+import static com.xingshijie.template.utils.LogUtils.makeLogTag;
+
 /**
  * Created by Word Xing  on 2016/5/11.
  */
 public class FastJsonConverterFactory extends Converter.Factory{
 
+    private static final String TAG = makeLogTag(FastJsonConverterFactory.class);
     private final MediaType mediaType =MediaType.parse("application/json; charset=UTF-8");
 
     @Override
@@ -39,9 +42,10 @@ public class FastJsonConverterFactory extends Converter.Factory{
                     source.close();
                     body= ResponseBody.create(body.contentType(), body.contentLength(), buffer);
                     String s=body.string();
+                    LOGD(TAG, "convertResponse: " + s);
                     return JSON.parseObject(s, type);
                 }catch (Exception e){
-                    Log.e("",e.getMessage());
+                    LOGE(TAG, "convert: ", e);
                 }
                 return null;
             }
@@ -55,6 +59,7 @@ public class FastJsonConverterFactory extends Converter.Factory{
             @Override
             public RequestBody convert(Object value) throws IOException {
                 String json = JSON.toJSONString(value);
+                LOGD(TAG, "convertRequest: "+json);
                 return RequestBody.create(mediaType, json);
             }
         };
