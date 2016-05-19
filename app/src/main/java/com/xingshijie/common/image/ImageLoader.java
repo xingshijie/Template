@@ -16,10 +16,12 @@
 
 package com.xingshijie.common.image;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
+import android.app.Fragment;
 import android.widget.ImageView;
 
 import com.bumptech.glide.BitmapRequestBuilder;
@@ -54,6 +56,17 @@ public class ImageLoader {
         VariableWidthImageLoader imageLoader = new VariableWidthImageLoader(context);
         mGlideModelRequest = Glide.with(context).using(imageLoader).from(String.class).asBitmap();
         mCenterCrop = new CenterCrop(Glide.get(context).getBitmapPool());
+    }
+
+    public ImageLoader(Activity activity) {
+        VariableWidthImageLoader imageLoader = new VariableWidthImageLoader(activity);
+        mGlideModelRequest = Glide.with(activity).using(imageLoader).from(String.class).asBitmap();
+        mCenterCrop = new CenterCrop(Glide.get(activity).getBitmapPool());
+    }
+
+    public ImageLoader(Fragment fragment) {
+        mGlideModelRequest = Glide.with(fragment).from(String.class).asBitmap();
+        mCenterCrop = new CenterCrop(Glide.get(fragment.getContext()).getBitmapPool());
     }
 
     /**
