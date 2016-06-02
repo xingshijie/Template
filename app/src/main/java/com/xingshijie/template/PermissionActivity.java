@@ -33,6 +33,9 @@ import android.widget.RelativeLayout;
 
 import static com.xingshijie.template.utils.LogUtils.makeLogTag;
 
+/**
+ * <a href="https://github.com/googlecodelabs/hello-beacons.git">来源地址 </a>
+ */
 public class PermissionActivity extends AppCompatActivity{
 
     private static final String TAG = makeLogTag(PermissionActivity.class);
